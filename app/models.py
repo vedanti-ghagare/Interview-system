@@ -1,6 +1,6 @@
 from . import db
-from datetime import datetime , UTC
-
+from datetime import datetime
+from zoneinfo import ZoneInfo
 class User(db.Model):
 
     __tablename__ = "users"
@@ -73,7 +73,7 @@ class Result(db.Model):
 
     date = db.Column(
         db.DateTime,
-        default=lambda: datetime.now()
+        default=lambda: datetime.now(ZoneInfo("Asia/Kolkata"))
     )
     
 
