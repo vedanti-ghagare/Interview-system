@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Question{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Edit Question</h2>
+
+    <form method="POST">
+
+        <select class="form-select mb-3" name="category" required>
+
+            {% for category in categories %}
+
+            <option value="{{ category.id }}"
+                {% if category.id == question.category_id %}
+                    selected
+                {% endif %}
+            >
+                {{ category.category_name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <select class="form-select mb-3" name="difficulty">
+
+            <option {% if question.difficulty=="Easy" %}selected{% endif %}>Easy</option>
+
+            <option {% if question.difficulty=="Medium" %}selected{% endif %}>Medium</option>
+
+            <option {% if question.difficulty=="Hard" %}selected{% endif %}>Hard</option>
+
+        </select>
+
+        <textarea class="form-control mb-3"
+                  name="question"
+                  rows="3">{{ question.question }}</textarea>
+
+        <input class="form-control mb-3"
+               name="option1"
+               value="{{ question.option1 }}">
+
+        <input class="form-control mb-3"
+               name="option2"
+               value="{{ question.option2 }}">
+
+        <input class="form-control mb-3"
+               name="option3"
+               value="{{ question.option3 }}">
+
+        <input class="form-control mb-3"
+               name="option4"
+               value="{{ question.option4 }}">
+
+        <input class="form-control mb-3"
+               name="answer"
+               value="{{ question.correct_answer }}">
+
+        <button class="btn btn-warning w-100">
+
+            Update Question
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card p-4 shadow bg-white text-dark">
+
+                <h2 class="text-center mb-4 text-dark">
+                    Register
+                </h2>
+
+                <a href="/" class="btn btn-outline-secondary mb-3">
+                    ← Back to Home
+                </a>
+
+                <!-- Flash messages -->
+
+                <form method="POST">
+
+                    <input class="form-control mb-3" name="username" placeholder="username" required>
+
+                    <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
+
+                    <input class="form-control mb-3" type="password" name="password" placeholder="Password" required>
+
+                    <button class="btn btn-primary w-100">
+                        Register
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

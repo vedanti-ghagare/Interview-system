@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<div class="hero">
+
+    <div class="container text-center">
+
+        <h1 class="display-4 fw-bold">
+            Interview Preparation & Evaluation System
+        </h1>
+
+        <p class="lead mt-4">
+            Practice interviews, improve your confidence, and track your performance.
+        </p>
+
+        <div class="text-center mt-5">
+
+    <div class="mb-3">
+
+        <a href="/register"
+           class="btn btn-primary btn-lg px-5 me-3">
+            Register
+        </a>
+
+        <a href="/login"
+           class="btn btn-outline-light btn-lg px-5">
+            Login
+        </a>
+
+    </div>
+
+    <div>
+
+        <a href="/admin_login"
+           class="btn btn-danger px-4">
+            👑 Admin Login
+        </a>
+
+    </div>
+
+</div>
+
+    </div>
+
+</div>
+
+<section class="container mt-5">
+
+    <div class="row text-center">
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <h3>🎯 Practice</h3>
+
+                <p>
+                    Solve technical and HR interview questions.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <h3>📊 Results</h3>
+
+                <p>
+                    View your interview scores and previous attempts.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="feature-card">
+
+                <h3>🚀 Improve</h3>
+
+                <p>
+                    Build confidence before your real interview.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="text-center mt-5 mb-3">
+    © 2026 Interview Preparation & Evaluation System
+</footer>
+
+{% endblock %}

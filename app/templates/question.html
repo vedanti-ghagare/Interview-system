@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Add Question{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Add Interview Question</h2>
+
+    <form method="POST">
+
+        <select class="form-select mb-3" name="category" required>
+
+            <option value="">Select Category</option>
+
+            {% for category in categories %}
+
+            <option value="{{ category.id }}">
+                {{ category.category_name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <select class="form-select mb-3" name="difficulty" required>
+
+            <option value="">Select Difficulty</option>
+
+            <option>Easy</option>
+            <option>Medium</option>
+            <option>Hard</option>
+
+        </select>
+
+        <textarea
+            class="form-control mb-3"
+            name="question"
+            placeholder="Question"
+            rows="3"
+            required></textarea>
+
+        <input class="form-control mb-3" name="option1" placeholder="Option 1" required>
+
+        <input class="form-control mb-3" name="option2" placeholder="Option 2" required>
+
+        <input class="form-control mb-3" name="option3" placeholder="Option 3" required>
+
+        <input class="form-control mb-3" name="option4" placeholder="Option 4" required>
+
+        <input class="form-control mb-3" name="answer" placeholder="Correct Answer" required>
+
+        <button class="btn btn-success w-100">
+            Save Question
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

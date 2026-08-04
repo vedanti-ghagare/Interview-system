@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Start Interview{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Start Interview</h2>
+
+    <form method="POST">
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Select Category
+            </label>
+
+            <select class="form-select" name="category" required>
+
+                <option value="">Choose Category</option>
+
+                {% for category in categories %}
+
+                <option value="{{ category.id }}">
+                    {{ category.category_name }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Difficulty
+            </label>
+
+            <select class="form-select" name="difficulty" required>
+
+                <option value="">Choose Difficulty</option>
+
+                <option>Easy</option>
+
+                <option>Medium</option>
+
+                <option>Hard</option>
+
+            </select>
+
+        </div>
+        <div class="mb-3">
+
+            <label class="form-label">
+                Number of Questions
+            </label>
+
+            <select
+                name="question_count"
+                class="form-select"
+                required>
+
+                <option value="">Select Number of Questions</option>
+                <option value="5">5 Questions</option>
+                <option value="10">10 Questions</option>
+                <option value="15">15 Questions</option>
+                <option value="20">20 Questions</option>
+
+            </select>
+
+        </div>
+
+        <button class="btn btn-primary w-100">
+
+            Start Interview
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

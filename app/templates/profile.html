@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow">
+
+                <div class="card-header  text-white">
+
+                    <h3 class="mb-0">👤 My Profile</h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-bordered align-middle mb-0">
+
+                       
+
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ user.email }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Username</th>
+                            <td>{{ user.username }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Role</th>
+                            <td>
+                                {% if user.role == "admin" %}
+                                    <span class="badge bg-danger">Admin</span>
+                                {% else %}
+                                    <span class="badge bg-success">User</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card p-4 shadow bg-white text-dark">
+
+                <h2 class="text-center mb-4 text-dark">
+                    Admin Login
+                </h2>
+
+                <a href="/" class="btn btn-outline-secondary mb-3">
+                    ← Back to Home
+                </a>
+
+                <!-- Flash messages -->
+
+                <form method="POST">
+
+                    <input
+                        type="text"
+                        name="username"
+                        class="form-control mb-3"
+                        placeholder="Username"
+                        required
+                    >
+
+                    <input
+                        type="password"
+                        name="password"
+                        class="form-control mb-3"
+                        placeholder="Password"
+                        required
+                    >
+
+                    <button class="btn btn-danger w-100">
+                        Login as Admin
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
