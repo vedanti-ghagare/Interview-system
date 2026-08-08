@@ -1,84 +1,234 @@
 {% extends "base.html" %}
 
-{% block title %}Start Interview{% endblock %}
+{% block title %}INTERVIA | Start Interview{% endblock %}
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="intervia-interview-page">
 
-    <h2 class="mb-4">Start Interview</h2>
+    <!-- Header -->
 
-    <form method="POST">
+    <div class="interview-header">
 
-        <div class="mb-3">
+        <div class="interview-header-icon">
+            <i class="bi bi-mic-fill"></i>
+        </div>
 
-            <label class="form-label">
-                Select Category
-            </label>
+        <div>
+            <p class="interview-label">INTERVIEW SESSION</p>
 
-            <select class="form-select" name="category" required>
+            <h1>Start Your Interview</h1>
 
-                <option value="">Choose Category</option>
+            <p>
+                Choose your preferences and begin your practice session.
+            </p>
+        </div>
 
-                {% for category in categories %}
+    </div>
 
-                <option value="{{ category.id }}">
-                    {{ category.category_name }}
-                </option>
 
-                {% endfor %}
+    <!-- Interview Setup Card -->
 
-            </select>
+    <div class="interview-setup-card">
+
+        <div class="setup-title">
+
+            <div class="setup-icon">
+                <i class="bi bi-sliders"></i>
+            </div>
+
+            <div>
+                <h2>Interview Setup</h2>
+
+                <p>
+                    Customize your interview before you begin.
+                </p>
+            </div>
 
         </div>
 
-        <div class="mb-3">
 
-            <label class="form-label">
-                Difficulty
-            </label>
+        <form method="POST">
 
-            <select class="form-select" name="difficulty" required>
+            <!-- Category -->
 
-                <option value="">Choose Difficulty</option>
+            <div class="interview-field">
 
-                <option>Easy</option>
+                <label class="interview-field-label">
+                    <i class="bi bi-folder"></i>
+                    Select Category
+                </label>
 
-                <option>Medium</option>
+                <select
+                    class="form-select intervia-select"
+                    name="category"
+                    required>
 
-                <option>Hard</option>
+                    <option value="">
+                        Choose Category
+                    </option>
 
-            </select>
+                    {% for category in categories %}
+
+                    <option value="{{ category.id }}">
+                        {{ category.category_name }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <!-- Difficulty -->
+
+            <div class="interview-field">
+
+                <label class="interview-field-label">
+                    <i class="bi bi-speedometer2"></i>
+                    Difficulty
+                </label>
+
+                <select
+                    class="form-select intervia-select"
+                    name="difficulty"
+                    required>
+
+                    <option value="">
+                        Choose Difficulty
+                    </option>
+
+                    <option value="Easy">
+                        Easy
+                    </option>
+
+                    <option value="Medium">
+                        Medium
+                    </option>
+
+                    <option value="Hard">
+                        Hard
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Number of Questions -->
+
+            <div class="interview-field">
+
+                <label class="interview-field-label">
+                    <i class="bi bi-list-ol"></i>
+                    Number of Questions
+                </label>
+
+                <select
+                    name="question_count"
+                    class="form-select intervia-select"
+                    required>
+
+                    <option value="">
+                        Select Number of Questions
+                    </option>
+
+                    <option value="5">
+                        5 Questions
+                    </option>
+
+                    <option value="10">
+                        10 Questions
+                    </option>
+
+                    <option value="15">
+                        15 Questions
+                    </option>
+
+                    <option value="20">
+                        20 Questions
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Start Button -->
+
+            <button
+                type="submit"
+                class="start-interview-btn">
+
+                <i class="bi bi-play-fill"></i>
+
+                Start Interview
+
+                <i class="bi bi-arrow-right"></i>
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- Info Cards -->
+
+    <div class="interview-info-grid">
+
+        <div class="interview-info-card">
+
+            <i class="bi bi-lightning-charge-fill"></i>
+
+            <div>
+
+                <h3>Practice</h3>
+
+                <p>
+                    Challenge yourself with interview questions.
+                </p>
+
+            </div>
 
         </div>
-        <div class="mb-3">
 
-            <label class="form-label">
-                Number of Questions
-            </label>
 
-            <select
-                name="question_count"
-                class="form-select"
-                required>
+        <div class="interview-info-card">
 
-                <option value="">Select Number of Questions</option>
-                <option value="5">5 Questions</option>
-                <option value="10">10 Questions</option>
-                <option value="15">15 Questions</option>
-                <option value="20">20 Questions</option>
+            <i class="bi bi-bar-chart-line-fill"></i>
 
-            </select>
+            <div>
+
+                <h3>Track</h3>
+
+                <p>
+                    Your performance is recorded after every interview.
+                </p>
+
+            </div>
 
         </div>
 
-        <button class="btn btn-primary w-100">
 
-            Start Interview
+        <div class="interview-info-card">
 
-        </button>
+            <i class="bi bi-rocket-takeoff-fill"></i>
 
-    </form>
+            <div>
+
+                <h3>Improve</h3>
+
+                <p>
+                    Use your results to identify areas for improvement.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 

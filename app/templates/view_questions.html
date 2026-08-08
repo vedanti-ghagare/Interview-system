@@ -4,12 +4,47 @@
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="container py-4">
 
-    <h2 class="mb-4">All Interview Questions</h2>
-   <form method="GET" class="mb-4">
+    <!-- Page Header -->
 
-    <div class="input-group">
+    <div class="admin-page-header mb-4">
+
+        <div>
+
+            <div class="page-icon purple">
+                <i class="bi bi-file-text-fill"></i>
+            </div>
+
+            <div>
+                <h2>Interview Questions</h2>
+
+                <p>
+                    View, search, edit and manage interview questions.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Search Card -->
+
+    <div class="admin-form-card mb-4">
+
+        <div class="form-section-title">
+            <i class="bi bi-search"></i>
+            Search Questions
+        </div>
+
+        <p class="form-description">
+            Search questions by category or question text.
+        </p>
+
+        <form method="GET" action="/admin/view_questions">
+
+    <div class="search-box">
 
         <input
             type="text"
@@ -18,78 +53,205 @@
             placeholder="Search by Category or Question..."
             value="{{ search if search else '' }}">
 
-        <button class="btn btn-primary">
-            🔍 Search
+        <button type="submit" class="btn btn-primary search-btn">
+            <i class="bi bi-search"></i>
+            <span>Search</span>
         </button>
 
-        <a href="/admin/view_questions" class="btn btn-secondary">
-            Clear
+        <a href="/admin/view_questions" class="btn btn-secondary clear-btn">
+            <i class="bi bi-x-circle"></i>
+            <span>Clear</span>
         </a>
 
     </div>
 
 </form>
-    <table class="table table-bordered table-hover table-light">
 
-        <thead>
+    </div>
 
-            <tr>
 
-                <th>ID</th>
+    <!-- Questions List -->
 
-                <th>Category</th>
+    <div class="admin-list-card">
 
-                <th>Difficulty</th>
+        <div class="list-header">
 
-                <th class="question-column">Question</th>
-                <th class="actions-column">Actions</th>
+            <div>
 
-            </tr>
+                <h4>
+                    <i class="bi bi-list-check"></i>
+                    All Interview Questions
+                </h4>
 
-        </thead>
+                <p>
+                    Questions currently stored in INTERVIA.
+                </p>
 
-        <tbody>
+            </div>
 
-        {% for question in questions %}
+            <span class="category-count">
+                {{ questions|length }}
+            </span>
 
-            <tr>
+        </div>
 
-                <td>{{ question.id }}</td>
 
-                <td>{{ question.category.category_name }}</td>
+        {% if questions %}
 
-                <td>{{ question.difficulty }}</td>
+        <div class="table-responsive">
 
-                <td class="question-column">
-                    {{ question.question }}
-                </td>
+            <table class="table questions-table mb-0">
 
-                <td class="actions-column">
+                <thead>
 
-                    <div class="d-flex justify-content-center gap-2">
+                    <tr>
 
-                        <a href="{{ url_for('main.edit_question', id=question.id) }}"
-                            class="btn btn-sm btn-outline-primary">
-                            Edit
-                        </a>
+                        <th>ID</th>
 
-                        <a href="{{ url_for('main.delete_question', id=question.id) }}"
-                            class="btn btn-sm btn-outline-danger"
-                            onclick="return confirm('Are you sure you want to delete this question?');">
-                            Delete
-                        </a>
+                        <th>Category</th>
 
-                    </div>
+                        <th>Difficulty</th>
 
-                </td>
+                        <th class="question-column">
+                            Question
+                        </th>
 
-            </tr>
+                        <th class="actions-column">
+                            Actions
+                        </th>
 
-        {% endfor %}
+                    </tr>
 
-        </tbody>
+                </thead>
 
-    </table>
+
+                <tbody>
+
+                {% for question in questions %}
+
+                    <tr>
+
+                        <td>
+                            <span class="id-badge">
+                                {{ question.id }}
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <strong>
+                                {{ question.category.category_name }}
+                            </strong>
+                        </td>
+
+
+                        <td>
+
+                            {% if question.difficulty == "Easy" %}
+
+                                <span class="difficulty-badge easy">
+                                    Easy
+                                </span>
+
+                            {% elif question.difficulty == "Medium" %}
+
+                                <span class="difficulty-badge medium">
+                                    Medium
+                                </span>
+
+                            {% else %}
+
+                                <span class="difficulty-badge hard">
+                                    Hard
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <td class="question-column">
+
+                            {{ question.question }}
+
+                        </td>
+
+
+                        <td class="actions-column">
+
+                            <div class="question-actions">
+
+                                <a
+                                    href="{{ url_for('main.edit_question', id=question.id) }}"
+                                    class="btn btn-sm btn-outline-primary">
+
+                                    <i class="bi bi-pencil"></i>
+                                    <span>Edit</span>
+
+                                </a>
+
+
+                                <a
+                                    href="{{ url_for('main.delete_question', id=question.id) }}"
+                                    class="btn btn-sm btn-outline-danger"
+                                    onclick="return confirm('Are you sure you want to delete this question?');">
+
+                                    <i class="bi bi-trash3"></i>
+                                    <span>Delete</span>
+
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        {% else %}
+
+        <div class="empty-state">
+
+            <i class="bi bi-file-earmark-x"></i>
+
+            <h5>No Questions Found</h5>
+
+            {% if search %}
+
+                <p>
+                    No questions matched your search for
+                    <strong>"{{ search }}"</strong>.
+                </p>
+
+            {% else %}
+
+                <p>
+                    No interview questions have been added yet.
+                </p>
+
+            {% endif %}
+
+            <a href="{{ url_for('main.questions') }}"
+               class="btn btn-primary mt-2">
+
+                <i class="bi bi-plus-lg"></i>
+                Add Question
+
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </div>
 
 </div>
 

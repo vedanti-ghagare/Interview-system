@@ -4,48 +4,83 @@
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="container py-4">
 
-    <div class="row justify-content-center">
+    <div class="profile-card shadow">
 
-        <div class="col-lg-8">
+        <!-- Profile Header -->
 
-            <div class="card shadow">
+        <div class="profile-header">
 
-                <div class="card-header  text-white">
+            <div class="profile-avatar">
+                <i class="bi bi-person-fill"></i>
+            </div>
 
-                    <h3 class="mb-0">👤 My Profile</h3>
+            <h2>
+                {{ user.username }}
+            </h2>
 
+            <p>
+                Your INTERVIA account
+            </p>
+
+        </div>
+
+
+        <!-- Profile Information -->
+
+        <div class="profile-info">
+
+            <div class="profile-info-row">
+
+                <div class="profile-info-label">
+                    <i class="bi bi-person"></i>
+                    Username
                 </div>
 
-                <div class="card-body">
+                <div class="profile-info-value">
+                    {{ user.username }}
+                </div>
 
-                    <table class="table table-bordered align-middle mb-0">
+            </div>
 
-                       
 
-                        <tr>
-                            <th>Email</th>
-                            <td>{{ user.email }}</td>
-                        </tr>
+            <div class="profile-info-row">
 
-                        <tr>
-                            <th>Username</th>
-                            <td>{{ user.username }}</td>
-                        </tr>
+                <div class="profile-info-label">
+                    <i class="bi bi-envelope"></i>
+                    Email
+                </div>
 
-                        <tr>
-                            <th>Role</th>
-                            <td>
-                                {% if user.role == "admin" %}
-                                    <span class="badge bg-danger">Admin</span>
-                                {% else %}
-                                    <span class="badge bg-success">User</span>
-                                {% endif %}
-                            </td>
-                        </tr>
+                <div class="profile-info-value">
+                    {{ user.email }}
+                </div>
 
-                    </table>
+            </div>
+
+
+            <div class="profile-info-row">
+
+                <div class="profile-info-label">
+                    <i class="bi bi-shield-check"></i>
+                    Account Type
+                </div>
+
+                <div class="profile-info-value">
+
+                    {% if user.role == "admin" %}
+
+                        <span class="profile-role admin">
+                            Admin
+                        </span>
+
+                    {% else %}
+
+                        <span class="profile-role user">
+                            User
+                        </span>
+
+                    {% endif %}
 
                 </div>
 

@@ -514,3 +514,25 @@ def admin_login():
         return redirect(url_for("main.admin_login"))
 
     return render_template("admin_login.html")
+
+@main.route("/admin/delete_category/<int:id>")
+def delete_category(id):
+
+    if "user" not in session:
+        return redirect(url_for("main.login"))
+
+    user = User.query.filter_by(
+        username=session["user"]
+    ).first()
+
+    if user.role != "admin":
+        return "Access Denied!"
+
+    category = Category.query.get_or_404(id)
+
+    db.session.delete(category)
+    db.session.commit()
+
+    flash("Category deleted successfully!", "success")
+
+    return redirect(url_for("main.categories"))

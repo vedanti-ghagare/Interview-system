@@ -2,163 +2,207 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Interview Preparation System{% endblock %}</title>
+
+    <title>
+        {% block title %}INTERVIA{% endblock %}
+    </title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 
 <body>
-    {% if session.get("user") and request.path not in ["/", "/login", "/register", "/admin_login"] %}
 
-    {% if session.get("role") == "user" %}
+{% if session.get("role") == "user" %}
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- ================= USER NAVBAR ================= -->
 
-        <div class="container">
+<nav class="navbar navbar-expand-lg intervia-navbar">
 
-            <a class="navbar-brand fw-bold" href="/dashboard">
-                🎯 Interview Preparation System
-            </a>
+    <div class="container">
 
-            <button class="navbar-toggler" type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#userNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <a class="navbar-brand intervia-brand" href="/dashboard">
+            INTERVIA
+        </a>
 
-            <div class="collapse navbar-collapse" id="userNavbar">
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#userNavbar"
+                aria-controls="userNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
 
-                <ul class="navbar-nav ms-auto">
+            <span class="navbar-toggler-icon"></span>
 
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/dashboard' %}active{% endif %}"
-                            href="/dashboard">
-                            Dashboard
-                        </a>
-                    </li>
+        </button>
 
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/interview' %}active{% endif %}"
-                            href="/interview">
-                            Interview
-                        </a>
-                    </li>
+        <div class="collapse navbar-collapse" id="userNavbar">
 
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/results' %}active{% endif %}"
-                            href="/results">
-                            Results
-                        </a>
-                    </li>
+            <ul class="navbar-nav ms-auto">
 
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/profile' %}active{% endif %}"
-                            href="/profile">
-                            Profile
-                        </a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/dashboard' %}active{% endif %}"
+                       href="/dashboard">
+                        <i class="bi bi-grid"></i>
+                        Dashboard
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-warning fw-bold" href="/logout">Logout</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/interview' %}active{% endif %}"
+                       href="/interview">
+                        <i class="bi bi-mic"></i>
+                        Interview
+                    </a>
+                </li>
 
-                </ul>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/results' %}active{% endif %}"
+                       href="/results">
+                        <i class="bi bi-bar-chart"></i>
+                        Results
+                    </a>
+                </li>
 
-            </div>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/profile' %}active{% endif %}"
+                       href="/profile">
+                        <i class="bi bi-person"></i>
+                        Profile
+                    </a>
+                </li>
 
-        </div>
+                <li class="nav-item">
+                    <a class="nav-link logout-link"
+                       href="/logout">
+                        <i class="bi bi-box-arrow-right"></i>
+                        Logout
+                    </a>
+                </li>
 
-    </nav>
-
-    {% elif session.get("role") == "admin" %}
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-        <div class="container">
-
-            <a class="navbar-brand fw-bold" href="/admin">
-                🛠 Admin Panel
-            </a>
-
-            <button class="navbar-toggler" type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#adminNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="adminNavbar">
-
-                <ul class="navbar-nav ms-auto">
-
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/admin' %}active{% endif %}"
-                            href="/admin">
-                                Dashboard
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/admin/categories' %}active{% endif %}"
-                            href="/admin/categories">
-                            Categories
-                        </a>                    
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/admin/questions' %}active{% endif %}"
-                            href="/admin/questions">
-                            Add Question
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/admin/view_questions' %}active{% endif %}"
-                            href="/admin/view_questions">
-                            View Questions
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main.admin_users') }}">
-                            👥 Users
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-warning fw-bold" href="/logout">Logout</a>
-                    </li>
-
-                </ul>
-
-            </div>
+            </ul>
 
         </div>
 
-    </nav>
+    </div>
 
-    {% endif %}
+</nav>
+
+
+{% elif session.get("role") == "admin" %}
+
+<!-- ================= ADMIN NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg intervia-navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand intervia-brand" href="/admin">
+            INTERVIA
+            <span class="admin-label">ADMIN</span>
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#adminNavbar"
+                aria-controls="adminNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="adminNavbar">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/admin' %}active{% endif %}"
+                       href="/admin">
+                        <i class="bi bi-grid"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/admin/categories' %}active{% endif %}"
+                       href="/admin/categories">
+                        <i class="bi bi-folder"></i>
+                        Categories
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/admin/questions' %}active{% endif %}"
+                       href="/admin/questions">
+                        <i class="bi bi-plus-circle"></i>
+                        Add Question
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/admin/view_questions' %}active{% endif %}"
+                       href="/admin/view_questions">
+                        <i class="bi bi-file-text"></i>
+                        Questions
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/admin/users' %}active{% endif %}"
+                       href="{{ url_for('main.admin_users') }}">
+                        <i class="bi bi-people"></i>
+                        Users
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link logout-link"
+                       href="/logout">
+                        <i class="bi bi-box-arrow-right"></i>
+                        Logout
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
 
 {% endif %}
 
 
+<!-- ================= FLASH MESSAGES ================= -->
+
 <div class="container mt-3">
 
     {% with messages = get_flashed_messages(with_categories=true) %}
+
         {% if messages %}
+
             {% for category, message in messages %}
 
-                <div class="alert alert-{{ category }} alert-dismissible fade show shadow" role="alert">
+                <div class="alert alert-{{ category }} alert-dismissible fade show shadow"
+                     role="alert">
 
                     {{ message }}
 
@@ -170,14 +214,26 @@
                 </div>
 
             {% endfor %}
+
         {% endif %}
+
     {% endwith %}
 
 </div>
+
+
+<!-- ================= PAGE CONTENT ================= -->
+
+<main class="intervia-main">
+
     {% block content %}
     {% endblock %}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</main>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

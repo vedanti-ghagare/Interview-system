@@ -4,52 +4,157 @@
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="container py-4">
 
-    <h2 class="mb-4">📊 My Interview Results</h2>
+    <!-- Page Header -->
+
+    <div class="results-header mb-4">
+
+        <h2 class="fw-bold">
+            📊 My Interview Results
+        </h2>
+
+        <p>
+            Track your previous interview attempts and performance.
+        </p>
+
+    </div>
+
 
     {% if results %}
 
-    <table class="table table-bordered table-hover">
+    <!-- Results Table -->
 
-        <thead class="table-dark">
+    <div class="results-table-card shadow">
 
-            <tr>
-                <th>Date</th>
-                <th>Category</th>
-                <th>Score</th>
-                <th>Total Questions</th>
-            </tr>
+        <div class="table-responsive">
 
-        </thead>
+            <table class="table results-table mb-0">
 
-        <tbody>
+                <thead>
 
-            {% for result in results %}
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Score</th>
+                        <th>Total Questions</th>
+                        <th>Percentage</th>
+                    </tr>
 
-            <tr>
+                </thead>
 
-                <td>{{ result.date.strftime("%d-%m-%Y %H:%M") }}</td>
+                <tbody>
 
-                <td>{{ result.category.category_name }}</td>
+                    {% for result in results %}
 
-                <td>{{ result.score }}</td>
+                    {% set percentage =
+                        (result.score / result.total_questions * 100)
+                        |round if result.total_questions > 0 else 0
+                    %}
 
-                <td>{{ result.total_questions }}</td>
+                    <tr>
 
-            </tr>
+                        <td>
+                            <div class="result-date">
 
-            {% endfor %}
+                                <strong>
+                                    {{ result.date.strftime("%d-%m-%Y") }}
+                                </strong>
 
-        </tbody>
+                                <small>
+                                    {{ result.date.strftime("%H:%M") }}
+                                </small>
 
-    </table>
+                            </div>
+                        </td>
+
+
+                        <td>
+
+                            <span class="category-badge">
+                                {{ result.category.category_name }}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <strong class="score-value">
+                                {{ result.score }}
+                            </strong>
+
+                            <span class="score-total">
+                                / {{ result.total_questions }}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            {{ result.total_questions }}
+                        </td>
+
+
+                        <td>
+
+                            {% if percentage >= 80 %}
+
+                                <span class="percentage-badge excellent">
+                                    {{ percentage }}%
+                                </span>
+
+                            {% elif percentage >= 60 %}
+
+                                <span class="percentage-badge good">
+                                    {{ percentage }}%
+                                </span>
+
+                            {% else %}
+
+                                <span class="percentage-badge needs-practice">
+                                    {{ percentage }}%
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
 
     {% else %}
 
-    <div class="alert alert-info text-center">
+    <!-- No Results -->
 
-        No interview attempts yet.
+    <div class="empty-results-card text-center shadow">
+
+        <div class="empty-results-icon">
+            📊
+        </div>
+
+        <h3>
+            No Interview Attempts Yet
+        </h3>
+
+        <p>
+            You haven't completed any interviews yet.
+            Start your first interview and your results will appear here.
+        </p>
+
+        <a href="/interview" class="btn btn-primary mt-3">
+            🎯 Start Interview
+        </a>
 
     </div>
 

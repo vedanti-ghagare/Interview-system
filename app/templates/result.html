@@ -4,91 +4,149 @@
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="container py-4">
 
-    <div class="card shadow-lg mb-4">
+    <!-- Result Summary -->
 
-        <div class="card-body text-center">
+    <div class="result-summary-card text-center shadow">
 
-            <h2>🎉 Interview Completed</h2>
+        <div class="result-icon">
+            🏆
+        </div>
 
-            <h3 class="mt-3">
-                Your Score
+        <h2 class="fw-bold mt-3">
+            Interview Completed!
+        </h2>
+
+        <p class="result-subtitle">
+            Here's how you performed in your interview.
+        </p>
+
+        <h1 class="result-score">
+            {{ score }}<span>/{{ total }}</span>
+        </h1>
+
+        {% set percentage = (score / total * 100)|round if total > 0 else 0 %}
+
+        <div class="result-percentage">
+            {{ percentage }}%
+        </div>
+
+        <p class="accuracy-label">
+            Accuracy
+        </p>
+
+
+        {% if percentage >= 80 %}
+
+            <div class="result-message excellent">
+                🏆 Excellent Performance!
+                <small>You're doing really well. Keep it up!</small>
+            </div>
+
+        {% elif percentage >= 60 %}
+
+            <div class="result-message good">
+                👍 Good Job!
+                <small>You're on the right track. Keep practicing!</small>
+            </div>
+
+        {% else %}
+
+            <div class="result-message practice">
+                📚 Keep Practicing!
+                <small>Practice more and you'll improve.</small>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- Answer Review -->
+
+    <div class="d-flex justify-content-between align-items-center mt-5 mb-4">
+
+        <div>
+            <h3 class="fw-bold mb-1">
+                Answer Review
             </h3>
 
-            <h1 class="display-3 text-success">
-                {{ score }}/{{ total }}
-            </h1>
-
-            {% set percentage = (score / total * 100)|round if total > 0 else 0 %}
-
-            <h4>Accuracy: {{ percentage }}%</h4>
-
-            {% if percentage >= 80 %}
-                <div class="alert alert-success mt-3">
-                    🏆 Excellent Performance!
-                </div>
-
-            {% elif percentage >= 60 %}
-                <div class="alert alert-primary mt-3">
-                    👍 Good Job!
-                </div>
-
-            {% else %}
-                <div class="alert alert-warning mt-3">
-                    📚 Keep Practicing!
-                </div>
-            {% endif %}
-
+            <p class="text-secondary mb-0">
+                Review your answers and learn from your mistakes.
+            </p>
         </div>
 
     </div>
 
-    <h3 class="mb-4">Answer Review</h3>
 
     {% for item in review %}
 
-    <div class="card mb-3 shadow-sm">
+    <div class="review-card shadow-sm mb-3">
 
-        <div class="card-body">
+        <div class="review-card-body">
 
-            <h5>
-                Q{{ loop.index }}.
-                {{ item.question }}
-            </h5>
+            <div class="review-question">
 
-            <p class="mt-3">
+                <span class="question-badge">
+                    Q{{ loop.index }}
+                </span>
+
+                <span>
+                    {{ item.question }}
+                </span>
+
+            </div>
+
+
+            <!-- Your Answer -->
+
+            <div class="answer-row">
 
                 <strong>Your Answer:</strong>
 
                 {% if item.is_correct %}
-                    <span class="text-success">{{ item.user_answer }}</span>
+
+                    <span class="answer-correct">
+                        {{ item.user_answer }}
+                    </span>
+
                 {% else %}
-                    <span class="text-danger">{{ item.user_answer }}</span>
+
+                    <span class="answer-wrong">
+                        {{ item.user_answer }}
+                    </span>
+
                 {% endif %}
 
-            </p>
+            </div>
 
-            <p>
+
+            <!-- Correct Answer -->
+
+            <div class="answer-row">
 
                 <strong>Correct Answer:</strong>
 
-                <span class="text-success">
+                <span class="answer-correct">
                     {{ item.correct_answer }}
                 </span>
 
-            </p>
+            </div>
+
+
+            <!-- Status -->
 
             {% if item.is_correct %}
 
-                <span class="badge bg-success">
-                    Correct
+                <span class="result-status correct">
+                    ✓ Correct
                 </span>
 
             {% else %}
 
-                <span class="badge bg-danger">
-                    Incorrect
+                <span class="result-status incorrect">
+                    ✕ Incorrect
                 </span>
 
             {% endif %}
@@ -99,10 +157,17 @@
 
     {% endfor %}
 
-    <div class="text-center mt-4">
 
-        <a href="/dashboard" class="btn btn-primary">
-            Back to Dashboard
+    <!-- Bottom Buttons -->
+
+    <div class="result-actions text-center mt-5 mb-5">
+
+        <a href="/interview" class="btn btn-primary btn-lg px-4">
+            🔄 Take Another Interview
+        </a>
+
+        <a href="/dashboard" class="btn btn-outline-light btn-lg px-4 ms-2">
+            ← Dashboard
         </a>
 
     </div>

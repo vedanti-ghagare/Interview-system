@@ -4,69 +4,178 @@
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="container py-4">
 
-    <h2 class="mb-4">Edit Question</h2>
+    <!-- Page Header -->
+    <div class="page-header mb-4">
+        <div>
+            <h2 class="fw-bold mb-1">
+                <i class="bi bi-pencil-square"></i>
+                Edit Question
+            </h2>
 
-    <form method="POST">
+            <p class="mb-0">
+                Update the interview question and its options.
+            </p>
+        </div>
+    </div>
 
-        <select class="form-select mb-3" name="category" required>
 
-            {% for category in categories %}
+    <!-- Edit Question Card -->
+    <div class="card question-form-card">
 
-            <option value="{{ category.id }}"
-                {% if category.id == question.category_id %}
-                    selected
-                {% endif %}
-            >
-                {{ category.category_name }}
-            </option>
+        <div class="card-body p-4 p-md-5">
 
-            {% endfor %}
+            <form method="POST">
 
-        </select>
+                <!-- Category -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                        <i class="bi bi-folder"></i>
+                        Category
+                    </label>
 
-        <select class="form-select mb-3" name="difficulty">
+                    <select class="form-select" name="category" required>
 
-            <option {% if question.difficulty=="Easy" %}selected{% endif %}>Easy</option>
+                        {% for category in categories %}
 
-            <option {% if question.difficulty=="Medium" %}selected{% endif %}>Medium</option>
+                        <option value="{{ category.id }}"
+                            {% if category.id == question.category_id %}
+                                selected
+                            {% endif %}
+                        >
+                            {{ category.category_name }}
+                        </option>
 
-            <option {% if question.difficulty=="Hard" %}selected{% endif %}>Hard</option>
+                        {% endfor %}
 
-        </select>
+                    </select>
+                </div>
 
-        <textarea class="form-control mb-3"
-                  name="question"
-                  rows="3">{{ question.question }}</textarea>
 
-        <input class="form-control mb-3"
-               name="option1"
-               value="{{ question.option1 }}">
+                <!-- Difficulty -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                        <i class="bi bi-bar-chart"></i>
+                        Difficulty
+                    </label>
 
-        <input class="form-control mb-3"
-               name="option2"
-               value="{{ question.option2 }}">
+                    <select class="form-select" name="difficulty" required>
 
-        <input class="form-control mb-3"
-               name="option3"
-               value="{{ question.option3 }}">
+                        <option {% if question.difficulty == "Easy" %}selected{% endif %}>
+                            Easy
+                        </option>
 
-        <input class="form-control mb-3"
-               name="option4"
-               value="{{ question.option4 }}">
+                        <option {% if question.difficulty == "Medium" %}selected{% endif %}>
+                            Medium
+                        </option>
 
-        <input class="form-control mb-3"
-               name="answer"
-               value="{{ question.correct_answer }}">
+                        <option {% if question.difficulty == "Hard" %}selected{% endif %}>
+                            Hard
+                        </option>
 
-        <button class="btn btn-warning w-100">
+                    </select>
+                </div>
 
-            Update Question
 
-        </button>
+                <!-- Question -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">
+                        <i class="bi bi-question-circle"></i>
+                        Question
+                    </label>
 
-    </form>
+                    <textarea
+                        class="form-control"
+                        name="question"
+                        rows="4"
+                        required>{{ question.question }}</textarea>
+                </div>
+
+
+                <!-- Options -->
+                <div class="mb-4">
+
+                    <label class="form-label fw-semibold mb-3">
+                        <i class="bi bi-list-check"></i>
+                        Answer Options
+                    </label>
+
+                    <input
+                        class="form-control mb-3"
+                        name="option1"
+                        value="{{ question.option1 }}"
+                        placeholder="Option 1"
+                        required>
+
+                    <input
+                        class="form-control mb-3"
+                        name="option2"
+                        value="{{ question.option2 }}"
+                        placeholder="Option 2"
+                        required>
+
+                    <input
+                        class="form-control mb-3"
+                        name="option3"
+                        value="{{ question.option3 }}"
+                        placeholder="Option 3"
+                        required>
+
+                    <input
+                        class="form-control"
+                        name="option4"
+                        value="{{ question.option4 }}"
+                        placeholder="Option 4"
+                        required>
+
+                </div>
+
+
+                <!-- Correct Answer -->
+                <div class="mb-4">
+
+                    <label class="form-label fw-semibold">
+                        <i class="bi bi-check-circle"></i>
+                        Correct Answer
+                    </label>
+
+                    <input
+                        class="form-control"
+                        name="answer"
+                        value="{{ question.correct_answer }}"
+                        placeholder="Enter the correct answer"
+                        required>
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="edit-actions">
+
+                    <a href="/admin/view_questions"
+                       class="btn btn-outline-light">
+
+                        <i class="bi bi-arrow-left"></i>
+                        Cancel
+
+                    </a>
+
+                    <button type="submit"
+                            class="btn btn-primary">
+
+                        <i class="bi bi-check2-circle"></i>
+                        Update Question
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </div>
 

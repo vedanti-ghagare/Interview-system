@@ -6,73 +6,138 @@ Register
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="auth-page">
 
-    <div class="row justify-content-center">
+    <div class="auth-card">
 
-        <div class="col-md-6">
+        <div class="auth-icon">
+            <i class="bi bi-person-plus-fill"></i>
+        </div>
 
-            <div class="card p-4 shadow bg-white text-dark">
+        <h2>Create Account</h2>
 
-                <h2 class="text-center mb-4 text-dark">
-                    Register
-                </h2>
+        <p class="auth-subtitle">
+            Create your INTERVIA account and start practicing.
+        </p>
 
-                <a href="/" class="btn btn-outline-secondary mb-3">
-                    ← Back to Home
-                </a>
+        <form method="POST">
 
-                <!-- Flash messages -->
+            <!-- Username -->
 
-                <form method="POST">
+            <div class="mb-3 text-start">
 
-                    <input class="form-control mb-3" name="username" placeholder="username" required>
+                <label class="form-label">
+                    <i class="bi bi-person"></i>
+                    Username
+                </label>
 
-                    <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
-
-                    <div class="input-group mb-3">
-
-                        <input
-                            class="form-control"
-                            type="password"
-                            name="password"
-                            id="registerPassword"
-                            placeholder="Password"
-                            required>
-
-                        <button
-                            class="btn password-toggle"
-                            type="button"
-                            onclick="togglePassword('registerPassword', this)">
-                            👁️
-                        </button>
-
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">
-                        Register
-                    </button>
-
-                </form>
+                <input
+                    type="text"
+                    name="username"
+                    class="form-control"
+                    placeholder="Enter your username"
+                    required>
 
             </div>
 
-        </div>
+
+            <!-- Email -->
+
+            <div class="mb-3 text-start">
+
+                <label class="form-label">
+                    <i class="bi bi-envelope"></i>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Enter your email"
+                    required>
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="mb-4 text-start">
+
+                <label class="form-label">
+                    <i class="bi bi-lock"></i>
+                    Password
+                </label>
+
+                <div class="input-group">
+
+                    <input
+                        class="form-control"
+                        type="password"
+                        name="password"
+                        id="registerPassword"
+                        placeholder="Create a password"
+                        required>
+
+                    <button
+                        class="btn password-toggle"
+                        type="button"
+                        onclick="togglePassword('registerPassword', this)">
+
+                        <i class="bi bi-eye"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Register -->
+
+            <button type="submit" class="btn btn-primary w-100">
+
+                <i class="bi bi-person-plus"></i>
+                Create Account
+
+            </button>
+
+        </form>
+
+
+        <a href="/" class="back-home mt-3 d-block text-center">
+
+            <i class="bi bi-arrow-left"></i>
+            Back to Home
+
+        </a>
 
     </div>
 
 </div>
+
+
 <script>
 
 function togglePassword(inputId, button) {
 
     const passwordInput = document.getElementById(inputId);
+    const icon = button.querySelector("i");
 
     if (passwordInput.type === "password") {
+
         passwordInput.type = "text";
-        button.innerHTML = "🙈";
+
+        icon.classList.remove("bi-eye");
+        icon.classList.add("bi-eye-slash");
+
     } else {
+
         passwordInput.type = "password";
-        button.innerHTML = "👁️";
+
+        icon.classList.remove("bi-eye-slash");
+        icon.classList.add("bi-eye");
+
     }
 
 }

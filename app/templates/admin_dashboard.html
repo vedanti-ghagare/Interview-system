@@ -4,22 +4,60 @@
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="container py-4">
 
-    <h1 class="mb-4">Admin Dashboard</h1>
+    <!-- Admin Header -->
+
+    <div class="admin-welcome shadow mb-5">
+
+        <div>
+            <div class="admin-welcome-badge">
+                <i class="bi bi-shield-check"></i>
+                ADMIN PANEL
+            </div>
+
+            <h1>
+                Welcome to INTERVIA
+            </h1>
+
+            <p>
+                Manage your interview platform, questions, categories,
+                and registered users from one place.
+            </p>
+        </div>
+
+        <div class="admin-welcome-icon">
+            <i class="bi bi-speedometer2"></i>
+        </div>
+
+    </div>
+
+
+    <!-- Admin Management Cards -->
 
     <div class="row g-4">
 
+        <!-- Categories -->
+
         <div class="col-12 col-sm-6 col-lg-3">
 
+            <div class="admin-card h-100">
 
-            <div class="card shadow p-4 text-center">
+                <div class="admin-card-icon blue">
+                    <i class="bi bi-folder-fill"></i>
+                </div>
 
-                <h3>📂</h3>
+                <h4>
+                    Categories
+                </h4>
 
-                <h4>Categories</h4>
+                <p>
+                    Create and manage interview categories.
+                </p>
 
-                <a href="/admin/categories" class="btn btn-primary mt-3">
+                <a href="/admin/categories"
+                   class="btn btn-primary mt-auto">
+                    <i class="bi bi-arrow-right"></i>
                     Manage
                 </a>
 
@@ -27,49 +65,88 @@
 
         </div>
 
+
+        <!-- Add Question -->
+
         <div class="col-12 col-sm-6 col-lg-3">
 
+            <div class="admin-card h-100">
 
-            <div class="card shadow p-4 text-center">
+                <div class="admin-card-icon green">
+                    <i class="bi bi-plus-circle-fill"></i>
+                </div>
 
-                <h3>❓</h3>
+                <h4>
+                    Add Question
+                </h4>
 
-                <h4>Questions</h4>
+                <p>
+                    Add new interview questions to the system.
+                </p>
 
-                <a href="/admin/questions" class="btn btn-success mt-3">
-                    Manage
+                <a href="/admin/questions"
+                   class="btn btn-success mt-auto">
+                    <i class="bi bi-arrow-right"></i>
+                    Add Question
                 </a>
 
             </div>
 
         </div>
-            <div class="col-12 col-sm-6 col-lg-3">
 
-                <div class="card shadow p-4 text-center">
 
-                <h3>📄</h3>
+        <!-- View Questions -->
 
-                <h4>View Questions</h4>
+        <div class="col-12 col-sm-6 col-lg-3">
 
-                <a href="/admin/view_questions" class="btn btn-info mt-3">
-                    View
+            <div class="admin-card h-100">
+
+                <div class="admin-card-icon orange">
+                    <i class="bi bi-file-text-fill"></i>
+                </div>
+
+                <h4>
+                    Questions
+                </h4>
+
+                <p>
+                    View, edit, and manage existing questions.
+                </p>
+
+                <a href="/admin/view_questions"
+                   class="btn btn-warning mt-auto">
+                    <i class="bi bi-arrow-right"></i>
+                    View Questions
                 </a>
-                </div>
+
             </div>
-            <div class="col-12 col-sm-6 col-lg-3">
+
+        </div>
 
 
-                <div class="card shadow p-4 text-center">
+        <!-- Users -->
 
-                    <h3>👥</h3>
+        <div class="col-12 col-sm-6 col-lg-3">
 
-                    <h4>Users</h4>
+            <div class="admin-card h-100">
 
-                    <a href="{{ url_for('main.admin_users') }}" class="btn btn-warning mt-3">
-                        View
-                    </a>
-
+                <div class="admin-card-icon purple">
+                    <i class="bi bi-people-fill"></i>
                 </div>
+
+                <h4>
+                    Users
+                </h4>
+
+                <p>
+                    View registered users and their activity.
+                </p>
+
+                <a href="{{ url_for('main.admin_users') }}"
+                   class="btn btn-info mt-auto">
+                    <i class="bi bi-arrow-right"></i>
+                    View Users
+                </a>
 
             </div>
 
@@ -80,5 +157,3 @@
 </div>
 
 {% endblock %}
-
- 

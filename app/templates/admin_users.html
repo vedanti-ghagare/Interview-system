@@ -6,31 +6,81 @@ Registered Users
 
 {% block content %}
 
-<div class="container mt-5">
+<div class="container py-4">
 
-    <h2 class="mb-4">Registered Users</h2>
+    <!-- Page Header -->
 
-    <div class="card">
+    <div class="admin-page-header mb-4">
 
-        <div class="card-header">
-            All Registered Users
+        <div>
+
+            <div class="page-icon blue">
+                <i class="bi bi-people-fill"></i>
+            </div>
+
+            <div>
+                <h2>Registered Users</h2>
+
+                <p>
+                    View users registered on the INTERVIA platform.
+                </p>
+            </div>
+
         </div>
 
-        <div class="card-body p-0">
+    </div>
 
-            <div class="table-responsive">
 
-            <table class="table table-hover mb-0 align-middle">
+    <!-- Users Card -->
+
+    <div class="admin-list-card">
+
+        <div class="list-header">
+
+            <div>
+
+                <h4>
+                    <i class="bi bi-person-lines-fill"></i>
+                    All Registered Users
+                </h4>
+
+                <p>
+                    User accounts and their interview activity.
+                </p>
+
+            </div>
+
+            <span class="category-count">
+                {{ users|length }}
+            </span>
+
+        </div>
+
+
+        {% if users %}
+
+        <div class="table-responsive">
+
+            <table class="table users-table mb-0 align-middle">
 
                 <thead>
+
                     <tr>
-                        <th class="text-nowrap">ID</th>
-                        <th class="text-nowrap">Username</th>
-                        <th class="text-nowrap">Email</th>
-                        <th class="text-nowrap">Joined On</th>
-                        <th class="text-nowrap">Total Interviews</th>
+
+                        <th>ID</th>
+
+                        <th>Username</th>
+
+                        <th>Email</th>
+
+                        <th>Joined On</th>
+
+                        <th>Total Interviews</th>
+
                     </tr>
+
                 </thead>
+
 
                 <tbody>
 
@@ -38,18 +88,51 @@ Registered Users
 
                     <tr>
 
-                        <td class="text-nowrap">{{ user.id }}</td>
-
-                        <td class="text-nowrap">{{ user.username }}</td>
-
-                        <td class="text-nowrap">{{ user.email }}</td>
-
-                        <td class="text-nowrap">
-                            {{ user.joined_on.strftime("%d-%m-%Y") }}
+                        <td>
+                            <span class="id-badge">
+                                {{ user.id }}
+                            </span>
                         </td>
 
-                        <td class="text-nowrap">
-                            {{ Result.query.filter_by(user_id=user.id).count() }}
+
+                        <td>
+
+                            <div class="user-info">
+
+                                <div class="user-avatar">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+
+                                <strong>
+                                    {{ user.username }}
+                                </strong>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+                            <span class="user-email">
+                                {{ user.email }}
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <span class="date-badge">
+                                <i class="bi bi-calendar3"></i>
+                                {{ user.joined_on.strftime("%d-%m-%Y") }}
+                            </span>
+                        </td>
+
+
+                        <td>
+
+                            <span class="interview-count">
+                                {{ Result.query.filter_by(user_id=user.id).count() }}
+                            </span>
+
                         </td>
 
                     </tr>
@@ -59,9 +142,25 @@ Registered Users
                 </tbody>
 
             </table>
-            </div>
 
         </div>
+
+
+        {% else %}
+
+        <div class="empty-state">
+
+            <i class="bi bi-people"></i>
+
+            <h5>No Registered Users</h5>
+
+            <p>
+                No users have registered on INTERVIA yet.
+            </p>
+
+        </div>
+
+        {% endif %}
 
     </div>
 

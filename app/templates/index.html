@@ -1,106 +1,131 @@
 {% extends "base.html" %}
 
 {% block title %}
-Home
+INTERVIA
 {% endblock %}
 
 {% block content %}
 
-<div class="hero">
+<div class="intervia-home">
 
-    <div class="container text-center">
+    <!-- Decorative background -->
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
 
-        <h1 class="display-4 fw-bold">
-            Interview Preparation & Evaluation System
-        </h1>
+    <!-- HERO SECTION -->
 
-        <p class="lead mt-4">
-            Practice interviews, improve your confidence, and track your performance.
+    <section class="hero-section">
+
+        <div class="brand-title">
+
+            <div class="brand-icon">
+                <i class="bi bi-stars"></i>
+            </div>
+
+            <h1>INTERVIA</h1>
+
+            <p class="brand-subtitle">
+                Interview Preparation & Evaluation Platform
+            </p>
+
+        </div>
+
+
+        <p class="hero-description">
+            Practice interviews, improve your confidence,
+            and track your performance.
         </p>
 
-        <div class="text-center mt-5">
 
-    <div class="mb-3">
+        <!-- BUTTONS -->
 
-        <a href="/register"
-           class="btn btn-primary btn-lg px-5 me-3">
-            Register
-        </a>
+        <div class="hero-buttons">
 
-        <a href="/login"
-           class="btn btn-outline-light btn-lg px-5">
-            Login
-        </a>
+            <a href="/register" class="hero-btn primary-btn">
+                <i class="bi bi-person-plus"></i>
+                Register
+            </a>
+
+            <a href="/login" class="hero-btn secondary-btn">
+                <i class="bi bi-box-arrow-in-right"></i>
+                Login
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="features-section">
+
+        <div class="feature-card">
+
+            <div class="feature-icon practice-icon">
+                <i class="bi bi-bullseye"></i>
+            </div>
+
+            <h3>Practice</h3>
+
+            <p>
+                Solve technical and HR interview questions
+                and prepare yourself for real interviews.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon results-icon">
+                <i class="bi bi-bar-chart-line"></i>
+            </div>
+
+            <h3>Results</h3>
+
+            <p>
+                View your interview scores and track
+                your previous attempts.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon improve-icon">
+                <i class="bi bi-rocket-takeoff"></i>
+            </div>
+
+            <h3>Improve</h3>
+
+            <p>
+                Identify your strengths and weaknesses
+                and improve your interview performance.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SMALL BOTTOM TEXT -->
+
+    <div class="hero-footer">
+
+        <span>
+            <i class="bi bi-shield-check"></i>
+            Practice with confidence
+        </span>
+
+        <span>
+            <i class="bi bi-graph-up-arrow"></i>
+            Track your progress
+        </span>
 
     </div>
-
-    <!-- <div>
-
-        <a href="/admin_login"
-           class="btn btn-danger px-4">
-            👑 Admin Login
-        </a>
-
-    </div> -->
 
 </div>
-
-    </div>
-
-</div>
-
-<section class="container mt-5">
-
-    <div class="row text-center">
-
-        <div class="col-md-4">
-
-            <div class="feature-card">
-
-                <h3>🎯 Practice</h3>
-
-                <p>
-                    Solve technical and HR interview questions.
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-            <div class="feature-card">
-
-                <h3>📊 Results</h3>
-
-                <p>
-                    View your interview scores and previous attempts.
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="col-md-4">
-
-            <div class="feature-card">
-
-                <h3>🚀 Improve</h3>
-
-                <p>
-                    Build confidence before your real interview.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<footer class="text-center mt-5 mb-3">
-    © 2026 Interview Preparation & Evaluation System
-</footer>
 
 {% endblock %}
