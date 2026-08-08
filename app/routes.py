@@ -366,6 +366,23 @@ def delete_question(id):
 
     return redirect(url_for("main.view_questions"))
 
+@main.route("/admin/users")
+def admin_users():
+
+    if "user" not in session:
+        return redirect(url_for("main.login"))
+
+    if session.get("role") != "admin":
+        flash("Access Denied!", "danger")
+        return redirect(url_for("main.dashboard"))
+
+    users = User.query.all()
+
+    return render_template(
+        "admin_users.html",
+        users=users,
+        Result=Result
+    )
 @main.route("/start_test")
 def start_test():
 

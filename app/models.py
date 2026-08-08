@@ -18,6 +18,10 @@ class User(db.Model):
         nullable=False,
         default="user"
     )
+    joined_on = db.Column(
+        db.DateTime,
+        default=lambda: datetime.now()
+    )
 
 class Question(db.Model):
 

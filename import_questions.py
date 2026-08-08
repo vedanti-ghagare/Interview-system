@@ -7,7 +7,7 @@ app = create_app()
 
 with app.app_context():
 
-    workbook = load_workbook("questions3.xlsx")
+    workbook = load_workbook("question2.xlsx")
     sheet = workbook.active
 
     for row in sheet.iter_rows(min_row=2, values_only=True):

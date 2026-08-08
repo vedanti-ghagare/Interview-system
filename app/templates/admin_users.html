@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}
+Registered Users
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Registered Users</h2>
+
+    <div class="card">
+
+        <div class="card-header">
+            All Registered Users
+        </div>
+
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+
+            <table class="table table-hover mb-0 align-middle">
+
+                <thead>
+                    <tr>
+                        <th class="text-nowrap">ID</th>
+                        <th class="text-nowrap">Username</th>
+                        <th class="text-nowrap">Email</th>
+                        <th class="text-nowrap">Joined On</th>
+                        <th class="text-nowrap">Total Interviews</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for user in users %}
+
+                    <tr>
+
+                        <td class="text-nowrap">{{ user.id }}</td>
+
+                        <td class="text-nowrap">{{ user.username }}</td>
+
+                        <td class="text-nowrap">{{ user.email }}</td>
+
+                        <td class="text-nowrap">
+                            {{ user.joined_on.strftime("%d-%m-%Y") }}
+                        </td>
+
+                        <td class="text-nowrap">
+                            {{ Result.query.filter_by(user_id=user.id).count() }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

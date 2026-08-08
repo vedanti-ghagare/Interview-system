@@ -30,9 +30,25 @@ Register
 
                     <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
 
-                    <input class="form-control mb-3" type="password" name="password" placeholder="Password" required>
+                    <div class="input-group mb-3">
 
-                    <button class="btn btn-primary w-100">
+                        <input
+                            class="form-control"
+                            type="password"
+                            name="password"
+                            id="registerPassword"
+                            placeholder="Password"
+                            required>
+
+                        <button
+                            class="btn password-toggle"
+                            type="button"
+                            onclick="togglePassword('registerPassword', this)">
+                            👁️
+                        </button>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">
                         Register
                     </button>
 
@@ -45,5 +61,22 @@ Register
     </div>
 
 </div>
+<script>
+
+function togglePassword(inputId, button) {
+
+    const passwordInput = document.getElementById(inputId);
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        button.innerHTML = "🙈";
+    } else {
+        passwordInput.type = "password";
+        button.innerHTML = "👁️";
+    }
+
+}
+
+</script>
 
 {% endblock %}

@@ -8,9 +8,10 @@
 
     <h1 class="mb-4">Admin Dashboard</h1>
 
-    <div class="row">
+    <div class="row g-4">
 
-        <div class="col-md-4 mb-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+
 
             <div class="card shadow p-4 text-center">
 
@@ -26,7 +27,8 @@
 
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+
 
             <div class="card shadow p-4 text-center">
 
@@ -41,9 +43,9 @@
             </div>
 
         </div>
-                <div class="col-md-4 mb-4">
+            <div class="col-12 col-sm-6 col-lg-3">
 
-            <div class="card shadow p-4 text-center">
+                <div class="card shadow p-4 text-center">
 
                 <h3>📄</h3>
 
@@ -52,6 +54,22 @@
                 <a href="/admin/view_questions" class="btn btn-info mt-3">
                     View
                 </a>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+
+
+                <div class="card shadow p-4 text-center">
+
+                    <h3>👥</h3>
+
+                    <h4>Users</h4>
+
+                    <a href="{{ url_for('main.admin_users') }}" class="btn btn-warning mt-3">
+                        View
+                    </a>
+
+                </div>
 
             </div>
 

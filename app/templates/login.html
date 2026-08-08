@@ -31,13 +31,24 @@ Login
                         required
                     >
 
-                    <input
-                        type="password"
-                        name="password"
-                        class="form-control mb-3"
-                        placeholder="Password"
-                        required
-                    >
+                    <div class="input-group mb-3">
+
+                        <input
+                            class="form-control"
+                            type="password"
+                            name="password"
+                            id="loginPassword"
+                            placeholder="Password"
+                            required>
+
+                        <button
+                            class="btn password-toggle"
+                            type="button"
+                            onclick="togglePassword('loginPassword', this)">
+                            👁️
+                        </button>
+
+                    </div>
 
                     <button class="btn btn-success w-100">
                         Login
@@ -52,5 +63,22 @@ Login
     </div>
 
 </div>
+<script>
+
+function togglePassword(inputId, button) {
+
+    const passwordInput = document.getElementById(inputId);
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        button.innerHTML = "🙈";
+    } else {
+        passwordInput.type = "password";
+        button.innerHTML = "👁️";
+    }
+
+}
+
+</script>
 
 {% endblock %}
