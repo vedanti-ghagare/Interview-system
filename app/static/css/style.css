@@ -4175,3 +4175,270 @@ footer{
     }
 
 }
+/* =========================================
+   INTERVIA MOBILE RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* Main page spacing */
+    .container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    /* Interview page header */
+    .admin-page-header {
+        margin-top: 20px;
+    }
+
+    /* Main interview heading */
+    .admin-page-header h2 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .admin-page-header p {
+        font-size: 0.95rem;
+        margin-top: 6px;
+    }
+
+    /* Header icon */
+    .page-icon {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+        font-size: 22px;
+    }
+
+    /* Interview setup card */
+    .admin-form-card,
+    .question-form-card {
+        padding: 22px 18px;
+        border-radius: 18px;
+    }
+
+    /* Section heading */
+    .form-section-title {
+        font-size: 1.1rem;
+    }
+
+    .form-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* Form labels */
+    .form-label {
+        font-size: 0.95rem;
+    }
+
+    /* Form controls */
+    .form-control,
+    .form-select {
+        min-height: 54px;
+        font-size: 1rem;
+        border-radius: 12px;
+    }
+
+    /* Textarea */
+    textarea.form-control {
+        min-height: 110px;
+    }
+
+    /* Buttons */
+    .btn {
+        min-height: 50px;
+        font-size: 1rem;
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 12px 0;
+    }
+
+    .intervia-brand {
+        font-size: 1.6rem;
+        letter-spacing: 3px;
+    }
+
+    .navbar-toggler {
+        padding: 8px 12px;
+        border-radius: 10px;
+    }
+
+    .navbar-nav {
+        padding-top: 12px;
+    }
+
+    .navbar .nav-link {
+        padding: 10px 5px;
+    }
+
+}
+
+
+/* Smaller phones */
+
+@media (max-width: 480px) {
+
+    .container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .admin-page-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .admin-page-header p {
+        font-size: 0.88rem;
+    }
+
+    .page-icon {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        font-size: 20px;
+    }
+
+    .admin-form-card,
+    .question-form-card {
+        padding: 18px 14px;
+        border-radius: 16px;
+    }
+
+    .form-control,
+    .form-select {
+        min-height: 50px;
+        font-size: 0.95rem;
+    }
+
+}
+/* =====================================================
+   FINAL MOBILE FIX - INTERVIEW SETUP
+   ===================================================== */
+
+@media (max-width: 576px) {
+
+    /* Main interview page */
+    .intervia-interview-page {
+        width: 100%;
+        padding: 24px 14px 40px !important;
+        margin: 0;
+    }
+
+    /* Header */
+    .interview-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .interview-header-icon {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        border-radius: 14px;
+        font-size: 20px;
+    }
+
+    .interview-header h1 {
+        font-size: 1.55rem !important;
+        line-height: 1.2;
+        margin: 0;
+    }
+
+    .interview-header p:last-child {
+        font-size: 0.78rem !important;
+        line-height: 1.4;
+        margin-top: 5px;
+    }
+
+    /* Setup card */
+    .interview-setup-card {
+        width: 100%;
+        padding: 20px 16px !important;
+        border-radius: 18px;
+        box-sizing: border-box;
+    }
+
+    /* Setup title */
+    .setup-title {
+        gap: 11px;
+        padding-bottom: 18px;
+        margin-bottom: 20px;
+    }
+
+    .setup-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        font-size: 17px;
+        border-radius: 12px;
+    }
+
+    .setup-title h2 {
+        font-size: 1.05rem;
+    }
+
+    .setup-title p {
+        font-size: 0.75rem;
+    }
+
+    /* Fields */
+    .interview-field {
+        margin-bottom: 18px;
+    }
+
+    .interview-field-label {
+        font-size: 0.82rem;
+        margin-bottom: 7px;
+    }
+
+    /* Select boxes */
+    .intervia-select {
+        width: 100%;
+        height: 50px !important;
+        min-height: 50px;
+        font-size: 0.9rem;
+        padding: 0 13px !important;
+        border-radius: 11px !important;
+        box-sizing: border-box;
+    }
+
+    /* Start button */
+    .start-interview-btn {
+        width: 100%;
+        height: 50px !important;
+        margin-top: 4px;
+        font-size: 0.9rem;
+        border-radius: 11px;
+    }
+
+    /* Information cards */
+    .interview-info-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px;
+        margin-top: 18px;
+    }
+
+    .interview-info-card {
+        padding: 14px !important;
+        border-radius: 14px;
+        gap: 10px;
+    }
+
+    .interview-info-card > i {
+        font-size: 18px;
+    }
+
+    .interview-info-card h3 {
+        font-size: 0.85rem;
+    }
+
+    .interview-info-card p {
+        font-size: 0.7rem;
+    }
+}

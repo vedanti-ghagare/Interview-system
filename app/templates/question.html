@@ -4,293 +4,229 @@
 
 {% block content %}
 
-<div class="container mt-5">
+<!-- Page Header -->
 
-    <h2 class="mb-4">Add Interview Question</h2>
+<div class="admin-page-header mb-4">
 
-    <form method="POST">
+    <div>
 
-        <select class="form-select mb-3" name="category" required>
-
-            <option value="">Select Category</option>
-
-            {% for category in categories %}
-
-            <option value="{{ category.id }}">
-                {{ category.category_name }}
-            </option>
-
-          {% extends "base.html" %}
-
-{% block title %}Add Question{% endblock %}
-
-{% block content %}
-
-<div class="container py-4">
-
-    <!-- Page Header -->
-
-    <div class="admin-page-header mb-4">
+        <div class="page-icon green">
+            <i class="bi bi-plus-circle-fill"></i>
+        </div>
 
         <div>
+            <h2>Add Interview Question</h2>
 
-            <div class="page-icon green">
-                <i class="bi bi-plus-circle-fill"></i>
-            </div>
-
-            <div>
-                <h2>Add Interview Question</h2>
-
-                <p>
-                    Create a new question for the interview system.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- Question Form -->
-
-    <div class="admin-form-card question-form-card">
-
-        <div class="form-section-title">
-            <i class="bi bi-info-circle"></i>
-            Question Details
-        </div>
-
-        <p class="form-description">
-            Select the category and difficulty, then enter the question
-            and its answer options.
-        </p>
-
-
-        <form method="POST">
-
-            <!-- Category -->
-
-            <div class="mb-3">
-
-                <label class="form-label">
-                    Category
-                </label>
-
-                <select
-                    class="form-select"
-                    name="category"
-                    required>
-
-                    <option value="">
-                        Select Category
-                    </option>
-
-                    {% for category in categories %}
-
-                    <option value="{{ category.id }}">
-                        {{ category.category_name }}
-                    </option>
-
-                    {% endfor %}
-
-                </select>
-
-            </div>
-
-
-            <!-- Difficulty -->
-
-            <div class="mb-3">
-
-                <label class="form-label">
-                    Difficulty
-                </label>
-
-                <select
-                    class="form-select"
-                    name="difficulty"
-                    required>
-
-                    <option value="">
-                        Select Difficulty
-                    </option>
-
-                    <option>Easy</option>
-                    <option>Medium</option>
-                    <option>Hard</option>
-
-                </select>
-
-            </div>
-
-
-            <!-- Question -->
-
-            <div class="mb-3">
-
-                <label class="form-label">
-                    Question
-                </label>
-
-                <textarea
-                    class="form-control"
-                    name="question"
-                    placeholder="Enter interview question..."
-                    rows="4"
-                    required></textarea>
-
-            </div>
-
-
-            <!-- Options -->
-
-            <div class="form-section-title mt-4">
-
-                <i class="bi bi-list-check"></i>
-                Answer Options
-
-            </div>
-
-            <p class="form-description">
-                Enter four possible answers for the question.
+            <p>
+                Create a new question for the interview system.
             </p>
-
-
-            <div class="row">
-
-                <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
-                        Option 1
-                    </label>
-
-                    <input
-                        class="form-control"
-                        name="option1"
-                        placeholder="Enter option 1"
-                        required>
-
-                </div>
-
-
-                <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
-                        Option 2
-                    </label>
-
-                    <input
-                        class="form-control"
-                        name="option2"
-                        placeholder="Enter option 2"
-                        required>
-
-                </div>
-
-
-                <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
-                        Option 3
-                    </label>
-
-                    <input
-                        class="form-control"
-                        name="option3"
-                        placeholder="Enter option 3"
-                        required>
-
-                </div>
-
-
-                <div class="col-md-6 mb-3">
-
-                    <label class="form-label">
-                        Option 4
-                    </label>
-
-                    <input
-                        class="form-control"
-                        name="option4"
-                        placeholder="Enter option 4"
-                        required>
-
-                </div>
-
-            </div>
-
-
-            <!-- Correct Answer -->
-
-            <div class="mb-4">
-
-                <label class="form-label">
-                    Correct Answer
-                </label>
-
-                <input
-                    class="form-control"
-                    name="answer"
-                    placeholder="Enter the correct answer exactly as written above"
-                    required>
-
-                <div class="correct-answer-hint">
-                    <i class="bi bi-lightbulb"></i>
-                    Make sure the correct answer matches one of the four options.
-                </div>
-
-            </div>
-
-
-            <!-- Submit -->
-
-            <button
-                class="btn btn-success w-100 question-submit-btn">
-
-                <i class="bi bi-check-circle"></i>
-                Save Question
-
-            </button>
-
-        </form>
+        </div>
 
     </div>
 
 </div>
 
-{% endblock %}  {% endfor %}
 
-        </select>
+<!-- Question Form -->
 
-        <select class="form-select mb-3" name="difficulty" required>
+<div class="admin-form-card question-form-card">
 
-            <option value="">Select Difficulty</option>
+    <div class="form-section-title">
+        <i class="bi bi-info-circle"></i>
+        Question Details
+    </div>
 
-            <option>Easy</option>
-            <option>Medium</option>
-            <option>Hard</option>
+    <p class="form-description">
+        Select the category and difficulty, then enter the question
+        and its answer options.
+    </p>
 
-        </select>
 
-        <textarea
-            class="form-control mb-3"
-            name="question"
-            placeholder="Question"
-            rows="3"
-            required></textarea>
+    <form method="POST">
 
-        <input class="form-control mb-3" name="option1" placeholder="Option 1" required>
+        <!-- Category -->
 
-        <input class="form-control mb-3" name="option2" placeholder="Option 2" required>
+        <div class="mb-3">
 
-        <input class="form-control mb-3" name="option3" placeholder="Option 3" required>
+            <label class="form-label">
+                Category
+            </label>
 
-        <input class="form-control mb-3" name="option4" placeholder="Option 4" required>
+            <select
+                class="form-select"
+                name="category"
+                required>
 
-        <input class="form-control mb-3" name="answer" placeholder="Correct Answer" required>
+                <option value="">
+                    Select Category
+                </option>
 
-        <button class="btn btn-success w-100">
+                {% for category in categories %}
+
+                <option value="{{ category.id }}">
+                    {{ category.category_name }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+        </div>
+
+
+        <!-- Difficulty -->
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Difficulty
+            </label>
+
+            <select
+                class="form-select"
+                name="difficulty"
+                required>
+
+                <option value="">
+                    Select Difficulty
+                </option>
+
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+
+            </select>
+
+        </div>
+
+
+        <!-- Question -->
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Question
+            </label>
+
+            <textarea
+                class="form-control"
+                name="question"
+                placeholder="Enter interview question..."
+                rows="4"
+                required></textarea>
+
+        </div>
+
+
+        <!-- Options -->
+
+        <div class="form-section-title mt-4">
+
+            <i class="bi bi-list-check"></i>
+            Answer Options
+
+        </div>
+
+        <p class="form-description">
+            Enter four possible answers for the question.
+        </p>
+
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                    Option 1
+                </label>
+
+                <input
+                    class="form-control"
+                    name="option1"
+                    placeholder="Enter option 1"
+                    required>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                    Option 2
+                </label>
+
+                <input
+                    class="form-control"
+                    name="option2"
+                    placeholder="Enter option 2"
+                    required>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                    Option 3
+                </label>
+
+                <input
+                    class="form-control"
+                    name="option3"
+                    placeholder="Enter option 3"
+                    required>
+
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+
+                <label class="form-label">
+                    Option 4
+                </label>
+
+                <input
+                    class="form-control"
+                    name="option4"
+                    placeholder="Enter option 4"
+                    required>
+
+            </div>
+
+        </div>
+
+
+        <!-- Correct Answer -->
+
+        <div class="mb-4">
+
+            <label class="form-label">
+                Correct Answer
+            </label>
+
+            <input
+                class="form-control"
+                name="answer"
+                placeholder="Enter the correct answer exactly as written above"
+                required>
+
+            <div class="correct-answer-hint">
+                <i class="bi bi-lightbulb"></i>
+                Make sure the correct answer matches one of the four options.
+            </div>
+
+        </div>
+
+
+        <!-- Submit -->
+
+        <button
+            type="submit"
+            class="btn btn-success w-100 question-submit-btn">
+
+            <i class="bi bi-check-circle"></i>
             Save Question
+
         </button>
 
     </form>
